@@ -25,7 +25,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=1234
       - MONGO_INITDB_DATABASE=admin
     volumes:
-      - ./database:/data/db
+      - ./data_base:/data/db
     networks:
       # Este es el nombre de la network 
       #? Si queremos que se comuniquen 
