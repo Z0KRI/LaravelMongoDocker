@@ -17,5 +17,5 @@ yarn-error.log
 /.idea
 /.vscode
 
-/database/
+/data_base/
 composer.lock
