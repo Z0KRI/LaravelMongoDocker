@@ -28,4 +28,12 @@ RUN apt-get update -y && apt-get -y install --fix-missing \
     libonig-dev \
     libxml2-dev
 
+COPY . /var/www/html
+
+WORKDIR /var/www/html
+
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
+RUN composer install
+
 EXPOSE 8000
