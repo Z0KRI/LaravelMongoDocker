@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: LaravelContainer
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: 'php artisan serve --host=0.0.0.0'
+    volumes:
+      - .:/app
+    ports:
+      - "8081:8000"
+    networks:
+      # Este es el nombre de la network 
+      #? Si queremos que se comuniquen 
+      #? deben de estar en la misma
+      - laravel_network
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:4.4
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=1234
+      - MONGO_INITDB_DATABASE=admin
+    volumes:
+      - ./database:/data/db
+    networks:
+      # Este es el nombre de la network 
+      #? Si queremos que se comuniquen 
+      #? deben de estar en la misma
+      - laravel_network
+
+networks:
+  laravel_network:
+    driver: bridge
